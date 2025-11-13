@@ -14,25 +14,28 @@ Source: Kaggle - Netflix Movies and TV Shows
 ⚙️ Steps Performed
 
 1️⃣ Load the Dataset
+   
     df = pd.read_csv("netflix_titles.csv")
 
 Imported the Netflix dataset into a Pandas DataFrame for processing.
 
 2️⃣ Identify Missing Values
+   
     df.isnull().sum()
 
 *Checked for missing data across all columns.
 *Identified nulls in columns such as director, cast, country, rating, duration, and date_added.
 
 3️⃣ Handle Missing Values
-df.fillna({
+
+    df.fillna({
     'director': 'Unknown',
     'cast': 'Not available',
     'country': 'Unknown',
     'rating': df['rating'].mode()[0],
     'duration': '0 min',
     'date_added': 'Unknown'
-}, inplace=True)
+    }, inplace=True)
 
 *Replaced null values with appropriate placeholders or statistical replacements:
 *Text fields like director and cast were replaced with "Unknown" or "Not available".
@@ -41,6 +44,7 @@ df.fillna({
 *date_added set to "Unknown" if missing.
 
 4️⃣ Remove Duplicate Records
+    
     df.drop_duplicates(inplace=True)
 
 *Removed all duplicate rows to ensure data integrity.
