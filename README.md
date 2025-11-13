@@ -50,19 +50,22 @@ Imported the Netflix dataset into a Pandas DataFrame for processing.
 *Removed all duplicate rows to ensure data integrity.
 
 5️⃣ Standardize Text Values
-text_columns = ['type', 'country', 'rating']
-for col in text_columns:
+    
+    text_columns = ['type', 'country', 'rating']
+    for col in text_columns:
     df[col] = df[col].astype(str).str.strip().str.lower()
 
 *Converted key text columns to lowercase and removed extra spaces.
 *Standardized specific country names for consistency:
+  
     df['country'] = df['country'].replace({
     'united states': 'usa',
     'united kingdom': 'uk',
     'south korea': 'korea'
-})
+   })
 
 6️⃣ Format Dates
+   
     df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
     df['date_added'] = df['date_added'].dt.strftime('%d-%m-%Y')
     df['date_added'] = df['date_added'].fillna('Unknown')
@@ -71,11 +74,13 @@ for col in text_columns:
 *Handled invalid or missing dates gracefully by replacing them with "Unknown".
 
 7️⃣ Ensure Correct Data Types
-df['release_year'] = df['release_year'].astype(int)
+   
+    df['release_year'] = df['release_year'].astype(int)
 
 *Confirmed that release_year column contains integer values.
 
 8️⃣ Save the Cleaned Dataset
-df.to_csv("fully_cleaned_netflix_titles.csv", index=False)
+   
+    df.to_csv("fully_cleaned_netflix_titles.csv", index=False)
 
 *Exported the cleaned data into a new CSV file named fully_cleaned_netflix_titles.csv.
