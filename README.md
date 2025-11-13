@@ -12,6 +12,7 @@ Name: Netflix Movies and TV Shows Dataset
 Source: Kaggle - Netflix Movies and TV Shows
 
 ⚙️ Steps Performed
+
 1️⃣ Load the Dataset
     df = pd.read_csv("netflix_titles.csv")
 
